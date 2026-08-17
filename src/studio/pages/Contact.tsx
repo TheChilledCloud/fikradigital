@@ -23,7 +23,7 @@ export function Contact() {
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\nProject: ${form.project}\nBudget: ${form.budget}\n\n${form.message}`
     );
-    window.location.href = `mailto:ahmad.alfaisal@proton.me?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@fikradigital.de?subject=${subject}&body=${body}`;
     setSent(true);
     setTimeout(() => setSent(false), 4000);
   };

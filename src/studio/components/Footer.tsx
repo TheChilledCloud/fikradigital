@@ -33,8 +33,8 @@ export function Footer() {
 
           <div className="flex flex-col gap-3">
             <span className="text-canvas/40 text-xs uppercase tracking-widest mb-1">{t('nav.contact')}</span>
-            <a href="mailto:ahmad.alfaisal@proton.me" className="flex items-center gap-2 text-sm hover:text-violet transition-colors w-fit">
-              <Mail size={14} className="text-violet" /> ahmad.alfaisal@proton.me
+            <a href="mailto:info@fikradigital.de" className="flex items-center gap-2 text-sm hover:text-violet transition-colors w-fit">
+              <Mail size={14} className="text-violet" /> info@fikradigital.de
             </a>
             <a href="tel:+491776971407" className="flex items-center gap-2 text-sm hover:text-violet transition-colors w-fit" dir="ltr">
               <Phone size={14} className="text-violet" /> +49 177 6971407

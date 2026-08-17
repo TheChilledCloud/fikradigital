@@ -58,8 +58,8 @@ export function Datenschutz() {
                 Telefon: +49 177 6971407
                 <br />
                 E-Mail:{' '}
-                <a className={a} href="mailto:ahmad.alfaisal@proton.me">
-                  ahmad.alfaisal@proton.me
+                <a className={a} href="mailto:info@fikradigital.de">
+                  info@fikradigital.de
                 </a>
               </p>
             </div>

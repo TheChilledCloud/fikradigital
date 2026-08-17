@@ -371,7 +371,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       title: 'Let’s build something great',
       sub: 'Tell me about your project — free consultation, honest advice, reply within 24 hours.',
       cards: [
-        { label: 'Email', value: 'ahmad.alfaisal@proton.me', hint: 'Best for project briefs' },
+        { label: 'Email', value: 'info@fikradigital.de', hint: 'Best for project briefs' },
         { label: 'Phone / WhatsApp', value: '+49 177 6971407', hint: 'AR · EN · DE' },
         { label: 'GitHub', value: 'TheChilledCloud', hint: 'Code & experiments' },
       ],
@@ -633,7 +633,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       title: 'Lassen Sie uns etwas Großartiges bauen',
       sub: 'Erzählen Sie mir von Ihrem Projekt — kostenlose Beratung, ehrliche Einschätzung und Antwort innerhalb von 24 Stunden.',
       cards: [
-        { label: 'E-Mail', value: 'ahmad.alfaisal@proton.me', hint: 'Am besten für Projektbeschreibungen' },
+        { label: 'E-Mail', value: 'info@fikradigital.de', hint: 'Am besten für Projektbeschreibungen' },
         { label: 'Telefon / WhatsApp', value: '+49 177 6971407', hint: 'AR · EN · DE' },
         { label: 'GitHub', value: 'TheChilledCloud', hint: 'Code & Experimente' },
       ],
@@ -895,7 +895,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       title: 'لنصنع شيئاً رائعاً معاً',
       sub: 'حدثني عن مشروعك — استشارة مجانية، رأي صادق، ورد خلال 24 ساعة.',
       cards: [
-        { label: 'البريد', value: 'ahmad.alfaisal@proton.me', hint: 'الأفضل لملخصات المشاريع' },
+        { label: 'البريد', value: 'info@fikradigital.de', hint: 'الأفضل لملخصات المشاريع' },
         { label: 'الهاتف / واتساب', value: '+49 177 6971407', hint: 'عربي · إنجليزي · ألماني' },
         { label: 'GitHub', value: 'TheChilledCloud', hint: 'كود وتجارب' },
       ],
