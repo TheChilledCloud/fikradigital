@@ -1,35 +1,24 @@
 # fikradigital — Webdesign-Studio
 
-Source for the fikradigital.de website — standalone trilingual (EN/DE/AR) web-design studio site, hosted on GitHub Pages.
+Source for the fikradigital.de website — standalone trilingual (EN/DE/AR) web-design studio site.
 
-- Live: **https://fikradigital.de**
-- Repo: `TheChilledCloud/fikradigital` — `main` = source, `gh-pages` = built site (Pages source branch)
+- Live: **https://fikradigital.de** (Cloudflare Pages)
+- Repo: `TheChilledCloud/fikradigital` — `main` = source (legacy `gh-pages` branch was the old GitHub Pages deploy)
 - Demo subpaths (restaurant, dentists, crown-blade, mawj, rihla) live in `public/` and ship with the build.
+- SPA fallback: `public/_redirects` (`/* /index.html 200`) — deep links return proper 200s.
 
-## Deploy
+## Deploy (Cloudflare Pages)
 
 ```bash
 npm install          # if node_modules missing (NODE_ENV=development npm install on this host)
 npm run build        # → dist/
-git checkout gh-pages
-rm -rf assets crown-blade dentists mawj restaurant rihla vite.svg
-cp -r ../fikradigital/dist/* .   # from the project root: cp -r dist/* .
-cp index.html 404.html           # SPA fallback so deep links render the app
-git add -A && git commit -m "deploy: ..." && git push origin gh-pages
-git checkout main
+wrangler login       # one-time OAuth (browser)
+wrangler pages deploy dist --project-name fikradigital --branch main
 ```
 
-## DNS (fikradigital.de at GoDaddy)
+Custom domain `fikradigital.de` is attached to the Pages project in the Cloudflare dashboard (DNS: zone already on Cloudflare; Pages project creates the record automatically). Email routing (info@fikradigital.de) is configured in the Cloudflare zone.
 
-Replace the GoDaddy parking A records with the four GitHub Pages A records:
+## Cloudflare agent setup
 
-| Type | Name | Value |
-|------|------|-------|
-| A | @ | `185.199.108.153` |
-| A | @ | `185.199.109.153` |
-| A | @ | `185.199.110.153` |
-| A | @ | `185.199.111.153` |
-
-Then open repo **Settings → Pages** — if GitHub shows a verification TXT (`_github-challenge-fikradigital.de`), add it at GoDaddy too, then HTTPS auto-provisions.
-
-Optional: `CNAME www → thechilledcloud.github.io` if you want www.fikradigital.de to work.
+- Skills: `cloudflare/` category in the Hermes skill library (imported from `cloudflare/skills`, script at `AppData/Local/hermes/workspace/skill-imports/import_cloudflare_skills.py`, source copy at `~/.claude/skills/`)
+- MCP servers registered in Hermes: `cloudflare`, `cloudflare-docs`, `cloudflare-bindings`, `cloudflare-builds`, `cloudflare-observability` (OAuth on first use)
