@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAWJ — A House on the Edge of the Sea · Latakia</title>
+<meta name="description" content="Mawj is a small hotel on the Latakia corniche — forty-two rooms, a private beach, and a kitchen that cooks what the Mediterranean brings in each morning.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314263C'/%3E%3Cpath d='M4 12q3-4 6 0t6 0 6 0 6 0' stroke='%23A9854B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M4 20q3-4 6 0t6 0 6 0 6 0' stroke='%23F4F0E6' stroke-width='2' fill='none' stroke-linecap='round' opacity='.5'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="images/hero.jpg">
+<link rel="preload" href="fonts/Cinzel-Variable.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Satoshi-Variable.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/ElMessiri-Variable.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- ============ LEFT RAIL (desktop) ============ -->
+<nav class="rail" aria-label="Sections">
+  <a class="rail-brand" href="#home" data-scrollto="#home">
+    <span class="rb-name">MAWJ</span>
+    <span class="rb-sub" data-i18n="rail.sub">Latakia · Syria</span>
+  </a>
+  <ul class="rail-nav">
+    <li><a href="#house" data-scrollto="#house" data-active="house"><span class="rn-num">01</span><span class="rn-label" data-i18n="nav.house">The House</span></a></li>
+    <li><a href="#rooms" data-scrollto="#rooms" data-active="rooms"><span class="rn-num">02</span><span class="rn-label" data-i18n="nav.rooms">Rooms &amp; Suites</span></a></li>
+    <li><a href="#dining" data-scrollto="#dining" data-active="dining"><span class="rn-num">03</span><span class="rn-label" data-i18n="nav.dining">Dining</span></a></li>
+    <li><a href="#experiences" data-scrollto="#experiences" data-active="experiences"><span class="rn-num">04</span><span class="rn-label" data-i18n="nav.exp">Experiences</span></a></li>
+    <li><a href="#coast" data-scrollto="#coast" data-active="coast"><span class="rn-num">05</span><span class="rn-label" data-i18n="nav.coast">The Coast</span></a></li>
+    <li><a href="#reserve" data-scrollto="#reserve" data-active="reserve"><span class="rn-num">06</span><span class="rn-label" data-i18n="nav.reserve">Reserve</span></a></li>
+  </ul>
+  <div class="rail-foot">
+    <div class="lang-switch rail-lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="de">DE</button>
+      <button type="button" data-lang="ar">AR</button>
+    </div>
+    <a class="rail-reserve text-link" href="#reserve" data-scrollto="#reserve" data-i18n="nav.reserve">Reserve</a>
+  </div>
+</nav>
+
+<!-- ============ MOBILE TOP BAR ============ -->
+<header class="topbar">
+  <a class="tb-brand" href="#home" data-scrollto="#home">
+    <span class="tb-name">MAWJ</span>
+    <span class="tb-sub" data-i18n="rail.sub">Latakia · Syria</span>
+  </a>
+  <div class="tb-right">
+    <div class="lang-switch tb-lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="de">DE</button>
+      <button type="button" data-lang="ar">AR</button>
+    </div>
+    <button class="tb-menu" id="menuBtn" aria-expanded="false" aria-controls="menuOverlay">
+      <span data-i18n="ui.menu">Menu</span>
+      <span class="tb-menu-lines" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU OVERLAY ============ -->
+<div class="overlay" id="menuOverlay" aria-hidden="true">
+  <div class="ov-head">
+    <span class="ov-brand">MAWJ</span>
+    <button class="ov-close" id="menuClose" aria-label="Close">
+      <span data-i18n="ui.close">Close</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+  </div>
+  <nav class="ov-nav">
+    <a href="#house" data-scrollto="#house" style="--i:0"><span>01</span><span data-i18n="nav.house">The House</span></a>
+    <a href="#rooms" data-scrollto="#rooms" style="--i:1"><span>02</span><span data-i18n="nav.rooms">Rooms &amp; Suites</span></a>
+    <a href="#dining" data-scrollto="#dining" style="--i:2"><span>03</span><span data-i18n="nav.dining">Dining</span></a>
+    <a href="#experiences" data-scrollto="#experiences" style="--i:3"><span>04</span><span data-i18n="nav.exp">Experiences</span></a>
+    <a href="#coast" data-scrollto="#coast" style="--i:4"><span>05</span><span data-i18n="nav.coast">The Coast</span></a>
+    <a href="#reserve" data-scrollto="#reserve" style="--i:5"><span>06</span><span data-i18n="nav.reserve">Reserve</span></a>
+  </nav>
+  <div class="ov-foot">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="de">DE</button>
+      <button type="button" data-lang="ar">AR</button>
+    </div>
+    <span class="ov-meta">35°31′N 35°47′E</span>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ 01 · HERO ============ -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="kicker hero-kicker"><span data-i18n="hero.kicker">Latakia — the Syrian coast</span></p>
+      <h1 class="hero-title reveal-lines">
+        <span class="ln"><span data-i18n="hero.l1">A house on</span></span>
+        <span class="ln"><span data-i18n="hero.l2">the edge of</span></span>
+        <span class="ln ln-last"><span data-i18n="hero.l3">the sea</span></span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero.sub">Mawj is a small hotel on the Latakia corniche — forty-two rooms, a private beach, and a kitchen that cooks what the Mediterranean brings in each morning.</p>
+      <div class="hero-ctas">
+        <a href="#reserve" class="btn btn-fill" data-scrollto="#reserve" data-magnetic><span data-i18n="hero.cta1">Reserve a stay</span></a>
+        <a href="#house" class="btn btn-line" data-scrollto="#house" data-magnetic><span data-i18n="hero.cta2">Discover the house</span></a>
+      </div>
+      <p class="hero-meta"><span data-i18n="hero.meta1">Est. 1952</span><i></i><span data-i18n="hero.meta2">Latakia · Syria</span></p>
+    </div>
+
+    <figure class="hero-fig">
+      <div class="hf-frame" aria-hidden="true"></div>
+      <div class="hf-img">
+        <img src="images/hero.jpg" alt="The corniche at first light" data-i18n-alt="hero.caption">
+      </div>
+    </figure>
+  </div>
+  <div class="hero-cue" aria-hidden="true">
+    <span class="hc-text" data-i18n="ui.scroll">Scroll</span>
+    <span class="hc-line"></span>
+  </div>
+</section>
+
+<!-- ============ 02 · THE HOUSE ============ -->
+<section class="house section" id="house">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <span class="sec-kicker" data-i18n="house.kicker">The House</span>
+    </div>
+    <h2 class="sec-title reveal-lines">
+      <span class="ln"><span data-i18n="house.l1">Forty-two rooms,</span></span>
+      <span class="ln"><span data-i18n="house.l2">one horizon.</span></span>
+    </h2>
+    <div class="house-grid">
+      <div class="house-fig reveal" data-parallax-wrap>
+        <div class="hf-frame" aria-hidden="true"></div>
+        <div class="hf-img">
+          <img src="images/house.jpg" alt="The garden pool at noon" data-i18n-alt="house.cap" data-parallax="6">
+        </div>
+      </div>
+      <div class="house-text">
+        <p class="reveal" data-i18n="house.p1">Mawj began in 1952 as a family house on the Latakia corniche, built by a ship captain who wanted his windows to open onto the same sea he crossed for a living. We have kept his habit: every room here faces the water.</p>
+        <p class="reveal" data-i18n="house.p2">The house has been restored slowly, on purpose. Stone, walnut, linen, brass. No two rooms are alike — the building refused to be made uniform, and we stopped trying.</p>
+        <p class="reveal" data-i18n="house.p3">Today, Mawj is a small hotel with forty-two rooms, a private beach, and a kitchen whose menu is set each morning by what the sea brings in.</p>
+        <p class="house-cap reveal" data-i18n="house.cap">The garden pool at noon</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><span class="stat-val" data-count="1952">0</span><span class="stat-lab" data-i18n="house.s1">Year founded</span></div>
+      <div class="stat reveal"><span class="stat-val" data-count="42">0</span><span class="stat-lab" data-i18n="house.s2">Rooms &amp; suites</span></div>
+      <div class="stat reveal"><span class="stat-val"><span data-count="400">0</span> m</span><span class="stat-lab" data-i18n="house.s3">Metres of private beach</span></div>
+      <div class="stat reveal"><span class="stat-val" data-count="2">0</span><span class="stat-lab" data-i18n="house.s4">Kitchens</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · ROOMS ============ -->
+<section class="rooms section" id="rooms">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <span class="sec-kicker" data-i18n="rooms.kicker">Rooms &amp; Suites</span>
+    </div>
+    <h2 class="sec-title reveal-lines">
+      <span class="ln"><span data-i18n="rooms.l1">Rooms that face the sea,</span></span>
+      <span class="ln"><span data-i18n="rooms.l2">nothing else.</span></span>
+    </h2>
+    <p class="sec-intro reveal" data-i18n="rooms.intro">All rooms share one rule — the window comes first.</p>
+
+    <div class="room-list">
+      <div class="room-row" data-preview="images/room-1.jpg" tabindex="0" role="button" aria-expanded="false">
+        <div class="rr-num" data-i18n="room1.num">I</div>
+        <div class="rr-name" data-i18n="room1.name">The Sea Room</div>
+        <div class="rr-spec" data-i18n="room1.spec">28 m² · sea view · window seat</div>
+        <div class="rr-price"><span class="rp-from" data-i18n="ui.from">from</span><span class="rp-val" data-i18n="room1.price">$210</span><span class="rp-per" data-i18n="ui.perNight">/ night</span></div>
+        <div class="rr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="rr-panel"><div class="rr-panel-in">
+          <div class="rr-pic"><img src="images/room-1.jpg" alt="" data-i18n-alt="room1.name"></div>
+          <div class="rr-info">
+            <p class="rr-desc" data-i18n="room1.desc">A calm room with a wide window seat, walnut floors, and the sound of the sea at night.</p>
+            <p class="rr-amen" data-i18n="room1.amen">Walnut floors · linen bedding · breakfast included</p>
+            <a href="#reserve" class="btn btn-line btn-sm" data-scrollto="#reserve"><span data-i18n="ui.reserveRoom">Reserve this room</span></a>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="room-row" data-preview="images/room-2.jpg" tabindex="0" role="button" aria-expanded="false">
+        <div class="rr-num" data-i18n="room2.num">II</div>
+        <div class="rr-name" data-i18n="room2.name">The Corner Suite</div>
+        <div class="rr-spec" data-i18n="room2.spec">42 m² · two sea fronts</div>
+        <div class="rr-price"><span class="rp-from" data-i18n="ui.from">from</span><span class="rp-val" data-i18n="room2.price">$340</span><span class="rp-per" data-i18n="ui.perNight">/ night</span></div>
+        <div class="rr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="rr-panel"><div class="rr-panel-in">
+          <div class="rr-pic"><img src="images/room-2.jpg" alt="" data-i18n-alt="room2.name"></div>
+          <div class="rr-info">
+            <p class="rr-desc" data-i18n="room2.desc">Two glass walls — morning light on one side, evening light on the other. The old part of the house.</p>
+            <p class="rr-amen" data-i18n="room2.amen">Sitting area · marble bath · breakfast included</p>
+            <a href="#reserve" class="btn btn-line btn-sm" data-scrollto="#reserve"><span data-i18n="ui.reserveRoom">Reserve this room</span></a>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="room-row" data-preview="images/room-3.jpg" tabindex="0" role="button" aria-expanded="false">
+        <div class="rr-num" data-i18n="room3.num">III</div>
+        <div class="rr-name" data-i18n="room3.name">The Riviera Suite</div>
+        <div class="rr-spec" data-i18n="room3.spec">58 m² · terrace · beach access</div>
+        <div class="rr-price"><span class="rp-from" data-i18n="ui.from">from</span><span class="rp-val" data-i18n="room3.price">$480</span><span class="rp-per" data-i18n="ui.perNight">/ night</span></div>
+        <div class="rr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="rr-panel"><div class="rr-panel-in">
+          <div class="rr-pic"><img src="images/room-3.jpg" alt="" data-i18n-alt="room3.name"></div>
+          <div class="rr-info">
+            <p class="rr-desc" data-i18n="room3.desc">A terrace over the corniche, a private path to the beach, and a bathroom of local stone.</p>
+            <p class="rr-amen" data-i18n="room3.amen">Private terrace · butler on call · beach path</p>
+            <a href="#reserve" class="btn btn-line btn-sm" data-scrollto="#reserve"><span data-i18n="ui.reserveRoom">Reserve this room</span></a>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="room-row" data-preview="images/room-4.jpg" tabindex="0" role="button" aria-expanded="false">
+        <div class="rr-num" data-i18n="room4.num">IV</div>
+        <div class="rr-name" data-i18n="room4.name">The Ugarit Penthouse</div>
+        <div class="rr-spec" data-i18n="room4.spec">96 m² · rooftop · two views</div>
+        <div class="rr-price"><span class="rp-from" data-i18n="ui.from">from</span><span class="rp-val" data-i18n="room4.price">$720</span><span class="rp-per" data-i18n="ui.perNight">/ night</span></div>
+        <div class="rr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="rr-panel"><div class="rr-panel-in">
+          <div class="rr-pic"><img src="images/room-4.jpg" alt="" data-i18n-alt="room4.name"></div>
+          <div class="rr-info">
+            <p class="rr-desc" data-i18n="room4.desc">Named for the ancient port asleep beneath the hills. The whole roof is yours: two views, one sky.</p>
+            <p class="rr-amen" data-i18n="room4.amen">Rooftop terrace · private dinner on request · two views</p>
+            <a href="#reserve" class="btn btn-line btn-sm" data-scrollto="#reserve"><span data-i18n="ui.reserveRoom">Reserve this room</span></a>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · DINING ============ -->
+<section class="dining section" id="dining">
+  <div class="container dining-grid">
+    <div class="dining-media reveal" data-parallax-wrap>
+      <div class="hf-frame" aria-hidden="true"></div>
+      <div class="hf-img dm-main">
+        <img src="images/dining.jpg" alt="The dining room" data-i18n-alt="dining.cap" data-parallax="5">
+      </div>
+      <div class="dm-small">
+        <img src="images/dining-2.jpg" alt="A table by the window" data-i18n-alt="dining.cap2" data-parallax="9">
+      </div>
+    </div>
+    <div class="dining-text">
+      <div class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <span class="sec-kicker" data-i18n="dining.kicker">Dining</span>
+      </div>
+      <h2 class="sec-title reveal-lines">
+        <span class="ln"><span data-i18n="dining.l1">Sea, salt,</span></span>
+        <span class="ln"><span data-i18n="dining.l2">and the wood oven.</span></span>
+      </h2>
+      <p class="sec-intro reveal" data-i18n="dining.p">Our kitchen cooks what the morning boats bring — fish from the Latakia quay, citrus from the groves behind the hills, bread from the wood oven. The menu changes with the catch; the kitchen follows the sea.</p>
+      <div class="dish-list">
+        <div class="dish reveal">
+          <div class="ds-info">
+            <h3 class="ds-name" data-i18n="dish1.name">Grilled sea bass</h3>
+            <p class="ds-desc" data-i18n="dish1.desc">From the morning catch, green olive oil, lemon from the garden</p>
+          </div>
+          <span class="ds-price" data-i18n="dish1.price">26</span>
+        </div>
+        <div class="dish reveal">
+          <div class="ds-info">
+            <h3 class="ds-name" data-i18n="dish2.name">Sayadieh</h3>
+            <p class="ds-desc" data-i18n="dish2.desc">The fishermen's rice of the coast — spiced, slow, honest</p>
+          </div>
+          <span class="ds-price" data-i18n="dish2.price">19</span>
+        </div>
+        <div class="dish reveal">
+          <div class="ds-info">
+            <h3 class="ds-name" data-i18n="dish3.name">Citrus salad</h3>
+            <p class="ds-desc" data-i18n="dish3.desc">Pomegranate, mint, sea salt, and the last of the winter oranges</p>
+          </div>
+        </div>
+      </div>
+      <p class="dining-note reveal" data-i18n="dining.note">Open daily 12:30 – 23:00 · terrace from May to October</p>
+      <a href="#reserve" class="btn btn-line" data-scrollto="#reserve" data-magnetic><span data-i18n="dining.cta">Reserve a table</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · EXPERIENCES ============ -->
+<section class="exp section" id="experiences">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">04</span>
+      <span class="sec-kicker" data-i18n="exp.kicker">Experiences</span>
+    </div>
+    <h2 class="sec-title reveal-lines">
+      <span class="ln"><span data-i18n="exp.l1">The coast keeps</span></span>
+      <span class="ln"><span data-i18n="exp.l2">its old calendar.</span></span>
+    </h2>
+    <p class="sec-intro reveal" data-i18n="exp.intro">The sea here has been lived on for five thousand years. We only arrange the introductions.</p>
+
+    <div class="exp-grid">
+      <div class="exp-list">
+        <div class="exp-item active" data-img="images/exp-beach.jpg" tabindex="0" role="button">
+          <span class="ex-num" data-i18n="exp1.num">01</span>
+          <div class="ex-body">
+            <h3 class="ex-name" data-i18n="exp1.name">A morning on the private beach</h3>
+            <p class="ex-desc" data-i18n="exp1.desc">Chairs, shade, and the sound of the water. The bar opens when you do.</p>
+          </div>
+        </div>
+        <div class="exp-item" data-img="images/exp-yacht.jpg" tabindex="0" role="button">
+          <span class="ex-num" data-i18n="exp2.num">02</span>
+          <div class="ex-body">
+            <h3 class="ex-name" data-i18n="exp2.name">Sail to Arwad</h3>
+            <p class="ex-desc" data-i18n="exp2.desc">Syria's only inhabited island, an hour across the water. The boat leaves the house every Friday at ten.</p>
+          </div>
+        </div>
+        <div class="exp-item" data-img="images/exp-ugarit.jpg" tabindex="0" role="button">
+          <span class="ex-num" data-i18n="exp3.num">03</span>
+          <div class="ex-body">
+            <h3 class="ex-name" data-i18n="exp3.name">Ugarit at first light</h3>
+            <p class="ex-desc" data-i18n="exp3.desc">The city that gave the world its first alphabet lies twenty minutes up the coast. We go before the sun gets high.</p>
+          </div>
+        </div>
+        <div class="exp-item" data-img="images/exp-spa.jpg" tabindex="0" role="button">
+          <span class="ex-num" data-i18n="exp4.num">04</span>
+          <div class="ex-body">
+            <h3 class="ex-name" data-i18n="exp4.name">The hammam</h3>
+            <p class="ex-desc" data-i18n="exp4.desc">A bathhouse in the old style — sea-salt scrubs and rooms that stay quiet all afternoon.</p>
+          </div>
+        </div>
+      </div>
+      <div class="exp-stage reveal">
+        <div class="hf-frame" aria-hidden="true"></div>
+        <div class="es-img active"><img src="images/exp-beach.jpg" alt="" data-i18n-alt="exp1.name"></div>
+        <div class="es-img"><img src="images/exp-yacht.jpg" alt="" data-i18n-alt="exp2.name"></div>
+        <div class="es-img"><img src="images/exp-ugarit.jpg" alt="" data-i18n-alt="exp3.name"></div>
+        <div class="es-img"><img src="images/exp-spa.jpg" alt="" data-i18n-alt="exp4.name"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · THE COAST ============ -->
+<section class="coast section" id="coast">
+  <div class="container coast-grid">
+    <div class="coast-text">
+      <div class="sec-head reveal">
+        <span class="sec-num">05</span>
+        <span class="sec-kicker" data-i18n="coast.kicker">The Coast</span>
+      </div>
+      <h2 class="sec-title reveal-lines">
+        <span class="ln"><span data-i18n="coast.l1">Latakia —</span></span>
+        <span class="ln"><span data-i18n="coast.l2">the old gate of the sea.</span></span>
+      </h2>
+      <p class="sec-intro reveal" data-i18n="coast.p">Latakia has been a port for four thousand years — first for the Phoenicians, then for everyone who looked east across the Mediterranean. The corniche is still the best seat in the city.</p>
+
+      <div class="coast-map-rows reveal">
+        <div class="cm-row"><span class="cmr-name" data-i18n="coast.map1.name">Latakia</span><span class="cmr-desc" data-i18n="coast.map1.desc">The house</span></div>
+        <div class="cm-row"><span class="cmr-name" data-i18n="coast.map2.name">Ugarit</span><span class="cmr-desc" data-i18n="coast.map2.desc">20 min north</span></div>
+        <div class="cm-row"><span class="cmr-name" data-i18n="coast.map3.name">Tartous</span><span class="cmr-desc" data-i18n="coast.map3.desc">1 h 20 min south</span></div>
+        <div class="cm-row"><span class="cmr-name" data-i18n="coast.map4.name">Arwad Island</span><span class="cmr-desc" data-i18n="coast.map4.desc">By boat from the house</span></div>
+      </div>
+
+      <div class="coast-here reveal">
+        <h3 class="ch-title" data-i18n="coast.hereTitle">Getting here</h3>
+        <p data-i18n="coast.here">Latakia International Airport is twenty minutes from the house. The old city of Latakia is a ten-minute walk along the corniche.</p>
+      </div>
+      <p class="coast-season reveal" data-i18n="coast.season">April to October is the season of light; November to March the season of storms — beautiful in its own way.</p>
+    </div>
+
+    <div class="coast-visual reveal">
+      <div class="cmap-wrap">
+        <img id="cmMap" class="coast-map cm-map" src="images/map-en.jpg" alt="Ugarit to Tartous — the Syrian coast">
+      </div>
+      <div class="coast-imgs">
+        <figure class="ci-fig">
+          <div class="hf-img"><img src="images/coast.jpg" alt="" data-i18n-alt="coast.cap" data-parallax="7"></div>
+          <figcaption class="hf-cap"><span class="hf-line" aria-hidden="true"></span><span data-i18n="coast.cap">The bay from the north</span></figcaption>
+        </figure>
+        <figure class="ci-fig">
+          <div class="hf-img"><img src="images/port.jpg" alt="" data-i18n-alt="coast.cap2" data-parallax="5"></div>
+          <figcaption class="hf-cap"><span class="hf-line" aria-hidden="true"></span><span data-i18n="coast.cap2">The old port</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · GUEST WORDS ============ -->
+<section class="words section" id="words">
+  <div class="container words-in">
+    <div class="sec-head reveal centered">
+      <span class="sec-kicker" data-i18n="words.kicker">Guest Book</span>
+    </div>
+    <div class="w-mark" aria-hidden="true">“</div>
+    <blockquote class="w-quote" id="wQuote" data-i18n-html="words.q1">We came for three nights and stayed nine. The house does not rush you.</blockquote>
+    <p class="w-who" id="wWho" data-i18n="words.a1">— Lina &amp; Georges, Beirut</p>
+    <div class="w-ctrls">
+      <button class="w-btn" id="wPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
+      <div class="w-prog" aria-hidden="true"><span id="wProgFill"></span></div>
+      <button class="w-btn" id="wNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 · RESERVE ============ -->
+<section class="reserve section" id="reserve">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">06</span>
+      <span class="sec-kicker" data-i18n="reserve.kicker">Reserve</span>
+    </div>
+    <h2 class="sec-title reveal-lines">
+      <span class="ln"><span data-i18n="reserve.l1">Write to us —</span></span>
+      <span class="ln"><span data-i18n="reserve.l2">the sea will wait.</span></span>
+    </h2>
+    <p class="sec-intro reveal" data-i18n="reserve.p">Tell us when you would like to come — we reply within 24 hours with availability and rates.</p>
+
+    <div class="reserve-grid">
+      <form class="res-form reveal" id="resForm" novalidate>
+        <div class="f-row">
+          <div class="f-field">
+            <label for="fArr" data-i18n="reserve.arrival">Arrival</label>
+            <input type="date" id="fArr" name="arrival">
+          </div>
+          <div class="f-field">
+            <label for="fDep" data-i18n="reserve.departure">Departure</label>
+            <input type="date" id="fDep" name="departure">
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-field f-select">
+            <label for="fGuests" data-i18n="reserve.guests">Guests</label>
+            <select id="fGuests" name="guests">
+              <option value="" data-i18n="reserve.g0">Guests</option>
+              <option value="1" data-i18n="reserve.g1">1 guest</option>
+              <option value="2" data-i18n="reserve.g2">2 guests</option>
+              <option value="3" data-i18n="reserve.g3">3 guests</option>
+              <option value="4" data-i18n="reserve.g4">4 guests</option>
+              <option value="5" data-i18n="reserve.g5">5 guests</option>
+              <option value="6" data-i18n="reserve.g6">6+ guests</option>
+            </select>
+          </div>
+          <div class="f-field f-select">
+            <label for="fRoom" data-i18n="reserve.room">Room</label>
+            <select id="fRoom" name="room">
+              <option value="" data-i18n="reserve.r0">Any room</option>
+              <option value="sea" data-i18n="room1.name">The Sea Room</option>
+              <option value="corner" data-i18n="room2.name">The Corner Suite</option>
+              <option value="riviera" data-i18n="room3.name">The Riviera Suite</option>
+              <option value="ugarit" data-i18n="room4.name">The Ugarit Penthouse</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-field">
+          <label for="fName" data-i18n="reserve.name">Name</label>
+          <input type="text" id="fName" name="name" data-i18n-placeholder="reserve.phName">
+        </div>
+        <div class="f-field">
+          <label for="fMail" data-i18n="reserve.email">Email</label>
+          <input type="email" id="fMail" name="email" data-i18n-placeholder="reserve.phMail">
+        </div>
+        <div class="f-field">
+          <label for="fMsg" data-i18n="reserve.msg">Message <em data-i18n="reserve.opt">(optional)</em></label>
+          <textarea id="fMsg" name="message" rows="3" data-i18n-placeholder="reserve.phMsg"></textarea>
+        </div>
+        <div class="f-submit">
+          <button type="submit" class="btn btn-fill" data-magnetic><span data-i18n="reserve.submit">Request reservation</span></button>
+          <p class="f-note" data-i18n="reserve.note">No prepayment for direct bookings — free cancellation up to 48 hours before arrival.</p>
+        </div>
+        <p class="res-ok" id="resOk" role="status" data-i18n="reserve.ok">Thank you — we will reply within 24 hours.</p>
+      </form>
+
+      <aside class="res-contact reveal">
+        <h3 class="rc-title" data-i18n="reserve.contact">Contact</h3>
+        <ul class="rc-list">
+          <li><span class="rc-lab" data-i18n="reserve.phone">Phone</span><a href="tel:+963415550192">+963 41 555 0192</a></li>
+          <li><span class="rc-lab" data-i18n="reserve.email">Email</span><a href="mailto:stay@mawj-hotel.com">stay@mawj-hotel.com</a></li>
+          <li><span class="rc-lab" data-i18n="reserve.addr">Address</span><span data-i18n="reserve.addrVal">Corniche, Latakia, Syria</span></li>
+          <li><span class="rc-lab" data-i18n="reserve.hours">Reception</span><span data-i18n="reserve.hoursVal">Open around the clock</span></li>
+        </ul>
+        <p class="rc-coords">35°31′N 35°47′E</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="fb-name">MAWJ</span>
+        <p class="fb-tag" data-i18n="footer.tag">A small hotel on the Syrian coast since 1952.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="footer.explore">Explore</h4>
+        <ul>
+          <li><a href="#house" data-scrollto="#house" data-i18n="nav.house">The House</a></li>
+          <li><a href="#rooms" data-scrollto="#rooms" data-i18n="nav.rooms">Rooms &amp; Suites</a></li>
+          <li><a href="#dining" data-scrollto="#dining" data-i18n="nav.dining">Dining</a></li>
+          <li><a href="#experiences" data-scrollto="#experiences" data-i18n="nav.exp">Experiences</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="footer.contact">Contact</h4>
+        <ul>
+          <li><a href="tel:+963415550192">+963 41 555 0192</a></li>
+          <li><a href="mailto:stay@mawj-hotel.com">stay@mawj-hotel.com</a></li>
+          <li><span data-i18n="reserve.addrVal">Corniche, Latakia, Syria</span></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="footer.follow">Follow</h4>
+        <ul class="foot-social">
+          <li><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg></a></li>
+          <li><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9a1 1 0 0 1 1-1z"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="footer.rights">© 2026 Mawj Hotel — Latakia, Syria</span>
+      <a class="fb-credit" href="https://ahmad-alfaisal.me" target="_blank" rel="noopener" data-i18n="footer.credit">Design by ALFAISAL·STUDIO</a>
+    </div>
+  </div>
+</footer>
+
+<!-- floating room preview (desktop) -->
+<div class="fp" id="fp" aria-hidden="true">
+  <img id="fpImg" src="" alt="">
+  <span class="fp-cap" id="fpCap"></span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+/* language-aware coast map — static infographic per language (DE falls back to EN) */
+(function () {
+  var im = document.getElementById('cmMap');
+  if (!im) return;
+  var alts = {
+    en: 'Ugarit to Tartous — the Syrian coast',
+    de: 'Ugarit bis Tartus — die syrische Küste',
+    ar: 'من أوغاريت إلى طرطوس — الساحل السوري'
+  };
+  function sw(lang) {
+    im.src = lang === 'ar' ? 'images/map-ar.jpg' : 'images/map-en.jpg';
+    im.alt = alts[lang] || alts.en;
+  }
+  sw(window.__mawjLang || 'en');
+  document.addEventListener('mawj:langchange', function (e) { sw(e.detail); });
+})();
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Oxanium:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-nebula: var(--color-nebula-dynamic);
+  --color-amethyst: var(--color-amethyst-dynamic);
+  --color-cider: var(--color-cider-dynamic);
+  --font-oxanium: "Oxanium", sans-serif;
+  /* Web-design studio palette (scoped to .studio-root usage) */
+  --color-canvas: #FAF7F2;
+  --color-ink: #16120F;
+  --color-violet: #6D28D9;
+  --color-violet-deep: #4C1D95;
+  --font-display: "Space Grotesk", "Cairo", sans-serif;
+  --font-body: "Outfit", "Cairo", sans-serif;
+}
+
+:root {
+  --color-nebula-dynamic: #0D1117;
+  --color-amethyst-dynamic: #9B7EDE;
+  --color-cider-dynamic: #E09F7D;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  --bg-panel: rgba(255, 255, 255, 0.05);
+  --border-panel: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --bg-backdrop: rgba(13, 17, 23, 0.6);
+  --bg-dropdown: rgba(13, 17, 23, 0.9);
+  
+  background-color: var(--color-nebula-dynamic);
+  color: var(--text-primary);
+}
+
+.theme-light {
+  --color-nebula-dynamic: #F3F4F6;
+  --color-amethyst-dynamic: #6D28D9;
+  --color-cider-dynamic: #D97706;
+  
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  
+  --bg-panel: rgba(0, 0, 0, 0.05);
+  --border-panel: rgba(0, 0, 0, 0.1);
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --bg-backdrop: rgba(243, 244, 246, 0.6);
+  --bg-dropdown: rgba(243, 244, 246, 0.9);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-nebula-dynamic);
+  font-family: var(--font-oxanium);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-nebula-dynamic);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-amethyst-dynamic);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cider-dynamic);
+}
+
+/* HUD Utilities */
+.hud-corner {
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  transition: border-color 0.3s ease;
+}
+
+.hud-border {
+  border: 1px solid var(--border-panel);
+  transition: border-color 0.3s ease;
+}
+
+/* Futuristic Button (.btn-one) */
+.btn-one {
+  color: var(--color-amethyst-dynamic);
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-one span {
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+.btn-one::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: var(--color-amethyst-dynamic);
+  border-bottom-color: var(--color-amethyst-dynamic);
+  transform: scale(0.1, 1);
+}
+.btn-one:hover span, .btn-one[data-active="true"] span {
+  letter-spacing: 2px;
+  color: var(--color-cider-dynamic);
+}
+.btn-one:hover::before, .btn-one[data-active="true"]::before {
+  opacity: 1; 
+  transform: scale(1, 1); 
+  border-top-color: var(--color-cider-dynamic);
+  border-bottom-color: var(--color-cider-dynamic);
+}
+.btn-one::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transition: all 0.3s ease;
+  background-color: var(--bg-panel);
+}
+.btn-one:hover::after, .btn-one[data-active="true"]::after {
+  opacity: 0; 
+  transform: scale(0.1, 1);
+}
+
+/* Arabic Font Overrides */
+.lang-ar body, .lang-ar input, .lang-ar textarea, .lang-ar button {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+/* Scroll Snapping restricted to non-touch desktop viewports */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .snap-container {
+    scroll-snap-type: y mandatory;
+  }
+  .snap-element {
+    scroll-snap-align: start;
+  }
+}
+
+/* Profile picture grayscale handled via inline styles in AboutSection.tsx
+   to prevent Lightning CSS from stripping the filter property */
+
+/* ─── Custom Cursor Glow (mouse-following radial light) ─── */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, rgba(155, 126, 222, 0.08) 0%, rgba(155, 126, 222, 0.03) 35%, transparent 70%);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.theme-light .cursor-glow {
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.10) 0%, rgba(109, 40, 217, 0.04) 35%, transparent 70%);
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  z-index: 60;
+  background: linear-gradient(90deg, var(--color-amethyst-dynamic), var(--color-cider-dynamic));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--color-amethyst-dynamic) 60%, transparent);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+/* ─── Glass / HUD Panel ─── */
+.glass-panel {
+  backdrop-filter: blur(12px);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-panel);
+}
+
+/* ─── Marquee ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.lang-ar .marquee-track {
+  animation-direction: reverse;
+}
+.marquee-fade-left {
+  background: linear-gradient(to right, var(--color-nebula-dynamic), transparent);
+}
+.marquee-fade-right {
+  background: linear-gradient(to left, var(--color-nebula-dynamic), transparent);
+}
+
+/* ─── Floating animation for hero badges ─── */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ═══════════════════════════════════════════════════════════
+   WEB-DESIGN STUDIO () — scoped styles
+   ═══════════════════════════════════════════════════════════ */
+.studio-root {
+  font-family: var(--font-body) !important;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+html.lang-ar .studio-root,
+html.lang-ar .studio-root * {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+/* Selection */
+.studio-root ::selection {
+  background: var(--color-violet);
+  color: #fff;
+}
+
+/* Paper grid texture */
+.paper-grid {
+  background-image:
+    linear-gradient(rgba(22, 18, 15, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 18, 15, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Floating / spinning shapes */
+@keyframes studio-float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+.float-y { animation: studio-float-y 7s ease-in-out infinite; }
+
+@keyframes studio-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-slow { animation: studio-spin 24s linear infinite; }
+
+/* Browser mockup */
+.browser-chrome {
+  border: 1px solid rgba(22, 18, 15, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 60px -20px rgba(22, 18, 15, 0.25), 0 0 0 1px rgba(22, 18, 15, 0.03);
+}
+
+@keyframes studio-scanline {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+.scanline {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(109, 40, 217, 0.45), transparent);
+  animation: studio-scanline 4.5s linear infinite;
+  pointer-events: none;
+}
+
+/* Studio button */
+.btn-studio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+}
+
+/* ─── Creative cursor (dot + trailing ring, shared by both sites) ─── */
+.fx-cursor-dot,
+.fx-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  opacity: 0;
+}
+.fx-cursor-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cursor-color, #6D28D9);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--cursor-color, #6D28D9) 60%, transparent);
+}
+.fx-cursor-ring {
+  width: 0;
+  height: 0;
+}
+.fx-cursor-ring-inner {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cursor-ring, rgba(109, 40, 217, 0.5));
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.fx-cursor-ring.is-hover .fx-cursor-ring-inner {
+  transform: scale(1.6);
+  border-color: var(--cursor-ring-strong, rgba(109, 40, 217, 0.95));
+  background: var(--cursor-ring-bg, rgba(109, 40, 217, 0.08));
+}
+.fx-cursor-ring.is-down .fx-cursor-ring-inner {
+  transform: scale(0.7);
+}
+
+/* Hide the OS cursor inside the studio + HUD shells (desktop only) */
+@media (pointer: fine) {
+  .studio-root,
+  .studio-root a,
+  .studio-root button,
+  .studio-root input,
+  .studio-root textarea,
+  .studio-root label,
+  .studio-root select {
+    cursor: none !important;
+  }
+  .hud-shell,
+  .hud-shell a,
+  .hud-shell button,
+  .hud-shell input,
+  .hud-shell textarea,
+  .hud-shell label,
+  .hud-shell select {
+    cursor: none !important;
+  }
+}
+
+/* HUD (main site) cursor theme — amethyst to match the HUD palette */
+.hud-shell {
+  --cursor-color: #9B7EDE;
+  --cursor-ring: rgba(155, 126, 222, 0.55);
+  --cursor-ring-strong: rgba(155, 126, 222, 0.95);
+  --cursor-ring-bg: rgba(155, 126, 222, 0.10);
+}
