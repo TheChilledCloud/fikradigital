@@ -1,6 +1,6 @@
 import { useLanguage } from '../context/LanguageContext';
 
-/** Infinite scrolling marquee band — translated, reverses in RTL. */
+/** Infinite marquee — alternating solid & outline display type, gold dots. */
 export function Marquee() {
   const { t } = useLanguage();
   const items: string[] = t('marquee') ?? [];
@@ -8,8 +8,15 @@ export function Marquee() {
   const row = (key: string) => (
     <div key={key} className="flex shrink-0 items-center">
       {items.map((item, i) => (
-        <span key={`${key}-${i}`} className="px-8 text-xl md:text-3xl font-display font-bold tracking-tight text-ink/20 uppercase whitespace-nowrap">
-          {item}
+        <span key={`${key}-${i}`} className="flex items-center">
+          <span
+            className={`mq-item text-xl md:text-2xl px-7 py-1 ${
+              i % 2 === 0 ? 'text-ink/85' : 'mq-outline'
+            }`}
+          >
+            {item}
+          </span>
+          <span className="mq-sep" aria-hidden="true" />
         </span>
       ))}
     </div>
@@ -18,7 +25,7 @@ export function Marquee() {
   if (!items.length) return null;
 
   return (
-    <div className="relative w-full overflow-hidden border-y border-ink/10 bg-canvas py-6 select-none">
+    <div className="relative w-full overflow-hidden border-y border-ink/10 bg-paper py-5 select-none" aria-hidden="true">
       <div className="marquee-track">
         {row('a')}
         {row('b')}

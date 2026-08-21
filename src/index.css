@@ -1,238 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Oxanium:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   FIKRA DIGITAL — design tokens
+   Palette extracted from the official logo files
+   (Fikra_logo_final/18_ink_cream + 30_graphite_gold):
+   cream #F5F1E8 · ink #1C1917 · taupe #7D7466
+   graphite #171717 · porcelain #F5F5F4 · gold #D4AF37
+   Type: Clash Display (600) for "Fikra", Satoshi (300, 0.14em)
+   for "DIGITAL" — vendored from the local font library.
+   ───────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Clash Display Variable";
+  src: url("./studio/assets/fonts/ClashDisplay-Variable.ttf") format("truetype");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi Variable";
+  src: url("./studio/assets/fonts/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi Variable";
+  src: url("./studio/assets/fonts/Satoshi-VariableItalic.ttf") format("truetype");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
-  --color-nebula: var(--color-nebula-dynamic);
-  --color-amethyst: var(--color-amethyst-dynamic);
-  --color-cider: var(--color-cider-dynamic);
-  --font-oxanium: "Oxanium", sans-serif;
-  /* Web-design studio palette (scoped to .studio-root usage) */
-  --color-canvas: #FAF7F2;
-  --color-ink: #16120F;
-  --color-violet: #6D28D9;
-  --color-violet-deep: #4C1D95;
-  --font-display: "Space Grotesk", "Cairo", sans-serif;
-  --font-body: "Outfit", "Cairo", sans-serif;
+  --color-canvas: #F5F1E8;
+  --color-paper: #EFE9DC;
+  --color-ink: #1C1917;
+  --color-taupe: #7D7466;
+  --color-gold: #D4AF37;
+  --color-gold-deep: #B8952E;
+  --color-graphite: #171717;
+  --color-porcelain: #F5F5F4;
+  --font-display: "Clash Display Variable", "Cairo", sans-serif;
+  --font-body: "Satoshi Variable", "Cairo", sans-serif;
 }
 
 :root {
-  --color-nebula-dynamic: #0D1117;
-  --color-amethyst-dynamic: #9B7EDE;
-  --color-cider-dynamic: #E09F7D;
-  
-  --text-primary: #ffffff;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  
-  --bg-panel: rgba(255, 255, 255, 0.05);
-  --border-panel: rgba(255, 255, 255, 0.1);
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --bg-backdrop: rgba(13, 17, 23, 0.6);
-  --bg-dropdown: rgba(13, 17, 23, 0.9);
-  
-  background-color: var(--color-nebula-dynamic);
-  color: var(--text-primary);
-}
-
-.theme-light {
-  --color-nebula-dynamic: #F3F4F6;
-  --color-amethyst-dynamic: #6D28D9;
-  --color-cider-dynamic: #D97706;
-  
-  --text-primary: #0F172A;
-  --text-secondary: #334155;
-  --text-muted: #64748B;
-  
-  --bg-panel: rgba(0, 0, 0, 0.05);
-  --border-panel: rgba(0, 0, 0, 0.1);
-  --border-subtle: rgba(0, 0, 0, 0.05);
-  --bg-backdrop: rgba(243, 244, 246, 0.6);
-  --bg-dropdown: rgba(243, 244, 246, 0.9);
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--color-nebula-dynamic);
-  font-family: var(--font-oxanium);
-  color: var(--text-primary);
+  background: var(--color-canvas);
+  font-family: var(--font-body);
+  color: var(--color-ink);
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-canvas); }
+::-webkit-scrollbar-thumb { background: rgba(125, 116, 102, 0.55); border-radius: 5px; border: 2px solid var(--color-canvas); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
 
-::-webkit-scrollbar-track {
-  background: var(--color-nebula-dynamic);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-amethyst-dynamic);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-cider-dynamic);
-}
-
-/* HUD Utilities */
-.hud-corner {
-  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 100%, 15px 100%, 0 calc(100% - 15px));
-  transition: border-color 0.3s ease;
-}
-
-.hud-border {
-  border: 1px solid var(--border-panel);
-  transition: border-color 0.3s ease;
-}
-
-/* Futuristic Button (.btn-one) */
-.btn-one {
-  color: var(--color-amethyst-dynamic);
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.btn-one span {
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-.btn-one::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0;
-  transition: all 0.3s ease;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-top-color: var(--color-amethyst-dynamic);
-  border-bottom-color: var(--color-amethyst-dynamic);
-  transform: scale(0.1, 1);
-}
-.btn-one:hover span, .btn-one[data-active="true"] span {
-  letter-spacing: 2px;
-  color: var(--color-cider-dynamic);
-}
-.btn-one:hover::before, .btn-one[data-active="true"]::before {
-  opacity: 1; 
-  transform: scale(1, 1); 
-  border-top-color: var(--color-cider-dynamic);
-  border-bottom-color: var(--color-cider-dynamic);
-}
-.btn-one::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  transition: all 0.3s ease;
-  background-color: var(--bg-panel);
-}
-.btn-one:hover::after, .btn-one[data-active="true"]::after {
-  opacity: 0; 
-  transform: scale(0.1, 1);
-}
-
-/* Arabic Font Overrides */
-.lang-ar body, .lang-ar input, .lang-ar textarea, .lang-ar button {
-  font-family: 'Cairo', sans-serif !important;
-}
-
-/* Scroll Snapping restricted to non-touch desktop viewports */
-@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
-  .snap-container {
-    scroll-snap-type: y mandatory;
-  }
-  .snap-element {
-    scroll-snap-align: start;
-  }
-}
-
-/* Profile picture grayscale handled via inline styles in AboutSection.tsx
-   to prevent Lightning CSS from stripping the filter property */
-
-/* ─── Custom Cursor Glow (mouse-following radial light) ─── */
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  background: radial-gradient(circle, rgba(155, 126, 222, 0.08) 0%, rgba(155, 126, 222, 0.03) 35%, transparent 70%);
-  transform: translate(-50%, -50%);
-  will-change: transform;
-}
-.theme-light .cursor-glow {
-  background: radial-gradient(circle, rgba(109, 40, 217, 0.10) 0%, rgba(109, 40, 217, 0.04) 35%, transparent 70%);
-}
-
-/* ─── Scroll Progress Bar ─── */
+/* Scroll progress — a single gold line */
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 2px;
   z-index: 60;
-  background: linear-gradient(90deg, var(--color-amethyst-dynamic), var(--color-cider-dynamic));
-  box-shadow: 0 0 12px color-mix(in srgb, var(--color-amethyst-dynamic) 60%, transparent);
+  background: var(--color-gold);
   transform-origin: 0 50%;
   transform: scaleX(0);
-}
-
-/* ─── Glass / HUD Panel ─── */
-.glass-panel {
-  backdrop-filter: blur(12px);
-  background: var(--bg-panel);
-  border: 1px solid var(--border-panel);
-}
-
-/* ─── Marquee ─── */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-.lang-ar .marquee-track {
-  animation-direction: reverse;
-}
-.marquee-fade-left {
-  background: linear-gradient(to right, var(--color-nebula-dynamic), transparent);
-}
-.marquee-fade-right {
-  background: linear-gradient(to left, var(--color-nebula-dynamic), transparent);
-}
-
-/* ─── Floating animation for hero badges ─── */
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.float-slow {
-  animation: float-slow 6s ease-in-out infinite;
 }
 
 /* ─── Reduced motion ─── */
@@ -246,37 +91,55 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
 /* ═══════════════════════════════════════════════════════════
-   WEB-DESIGN STUDIO () — scoped styles
+   STUDIO — the Fikra design language
    ═══════════════════════════════════════════════════════════ */
 .studio-root {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-body);
   background: var(--color-canvas);
   color: var(--color-ink);
+  /* creative cursor theme */
+  --cursor-color: #1C1917;
+  --cursor-ring: rgba(28, 25, 23, 0.35);
+  --cursor-ring-strong: rgba(212, 175, 55, 0.95);
+  --cursor-ring-bg: rgba(212, 175, 55, 0.10);
 }
+
 html.lang-ar .studio-root,
 html.lang-ar .studio-root * {
   font-family: 'Cairo', sans-serif !important;
 }
 
-/* Selection */
-.studio-root ::selection {
-  background: var(--color-violet);
-  color: #fff;
+/* Arabic reads bigger (explicit user rule) */
+html.lang-ar {
+  font-size: 18px;
+}
+html.lang-ar .studio-root h1,
+html.lang-ar .studio-root h2,
+html.lang-ar .studio-root h3 {
+  letter-spacing: 0;
+  line-height: 1.35;
 }
 
-/* Paper grid texture */
+/* Selection — gold */
+.studio-root ::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* Paper grid texture — the sketchbook of ideas */
 .paper-grid {
   background-image:
-    linear-gradient(rgba(22, 18, 15, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22, 18, 15, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(28, 25, 23, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 25, 23, 0.045) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
-/* Floating / spinning shapes */
+/* Floating */
 @keyframes studio-float-y {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
+  50% { transform: translateY(-14px); }
 }
 .float-y { animation: studio-float-y 7s ease-in-out infinite; }
 
@@ -284,45 +147,219 @@ html.lang-ar .studio-root * {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-.spin-slow { animation: studio-spin 24s linear infinite; }
+.spin-slow { animation: studio-spin 40s linear infinite; }
 
 /* Browser mockup */
 .browser-chrome {
-  border: 1px solid rgba(22, 18, 15, 0.08);
-  border-radius: 14px;
+  border: 1px solid rgba(28, 25, 23, 0.10);
+  border-radius: 16px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 24px 60px -20px rgba(22, 18, 15, 0.25), 0 0 0 1px rgba(22, 18, 15, 0.03);
+  box-shadow: 0 30px 60px -24px rgba(28, 25, 23, 0.28), 0 0 0 1px rgba(28, 25, 23, 0.03);
 }
 
-@keyframes studio-scanline {
-  0% { top: -10%; }
-  100% { top: 110%; }
+/* ─── Eyebrow (section kicker) ─── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-taupe);
 }
-.scanline {
-  position: absolute;
-  left: 0;
-  width: 100%;
+.eyebrow::before {
+  content: '';
+  width: 26px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(109, 40, 217, 0.45), transparent);
-  animation: studio-scanline 4.5s linear infinite;
-  pointer-events: none;
+  background: var(--color-gold);
 }
+html.lang-ar .eyebrow { letter-spacing: 0.1em; }
 
-/* Studio button */
-.btn-studio {
+/* ─── Nav links: underline draws itself ─── */
+.nav-link {
+  position: relative;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(28, 25, 23, 0.72);
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html.lang-ar .nav-link::after { transform-origin: 100% 50%; }
+.nav-link:hover { color: var(--color-ink); }
+.nav-link:hover::after,
+.nav-link.is-active::after { transform: scaleX(1); }
+.nav-link.is-active { color: var(--color-ink); }
+
+/* ─── Buttons — the Fikra family ─── */
+.btn-fikra {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   border-radius: 9999px;
-  font-weight: 700;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  font-family: var(--font-body);
+  font-weight: 600;
+  overflow: hidden;
   cursor: pointer;
+  transition: color 0.3s ease, box-shadow 0.35s ease, background-color 0.35s ease, transform 0.35s ease;
+}
+.btn-fikra > * { position: relative; z-index: 1; }
+.btn-fikra .btn-arrow {
+  transition: transform 0.3s ease;
+}
+.btn-fikra:hover .btn-arrow {
+  transform: translate(3px, -3px);
 }
 
-/* ─── Creative cursor (dot + trailing ring, shared by both sites) ─── */
+/* primary — ink pill, gold sweeps across on hover */
+.btn-fikra-primary {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  box-shadow: 0 10px 24px -12px rgba(28, 25, 23, 0.45);
+}
+.btn-fikra-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-fikra-primary:hover { color: var(--color-ink); }
+.btn-fikra-primary:hover::before { transform: scaleX(1); }
+
+/* dark — porcelain pill on graphite, same gold sweep */
+.btn-fikra-dark {
+  background: var(--color-porcelain);
+  color: var(--color-ink);
+}
+.btn-fikra-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-fikra-dark:hover { color: var(--color-ink); }
+.btn-fikra-dark:hover::before { transform: scaleX(1); }
+
+/* ghost — hairline ring, warm gold wash on hover */
+.btn-fikra-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  box-shadow: inset 0 0 0 1.5px rgba(28, 25, 23, 0.25);
+}
+.btn-fikra-ghost:hover {
+  box-shadow: inset 0 0 0 1.5px var(--color-ink);
+  background: rgba(212, 175, 55, 0.10);
+}
+.btn-fikra-ghost-on-dark {
+  background: transparent;
+  color: var(--color-porcelain);
+  box-shadow: inset 0 0 0 1.5px rgba(245, 245, 244, 0.3);
+}
+.btn-fikra-ghost-on-dark:hover {
+  box-shadow: inset 0 0 0 1.5px var(--color-gold);
+  background: rgba(212, 175, 55, 0.10);
+}
+
+/* ─── Cards: hand-drawn hairline, gold underline on hover ─── */
+.card-fikra {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid rgba(28, 25, 23, 0.10);
+  background: #fff;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.card-fikra:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 24px 44px -22px rgba(28, 25, 23, 0.25);
+}
+.card-fikra .card-title-underline {
+  display: inline-block;
+  position: relative;
+}
+.card-fikra .card-title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
+}
+html.lang-ar .card-fikra .card-title-underline::after { transform-origin: 100% 50%; }
+.card-fikra:hover .card-title-underline::after { transform: scaleX(1); }
+
+/* ─── Thought line (dotted connector between process steps) ─── */
+.thought-line {
+  position: absolute;
+  top: 2.35rem;
+  left: 9%;
+  right: 9%;
+  height: 3px;
+  background-image: radial-gradient(circle, rgba(28, 25, 23, 0.32) 1.2px, transparent 1.7px);
+  background-size: 16px 3px;
+  background-repeat: repeat-x;
+}
+html.lang-ar .thought-line { transform: scaleX(-1); }
+
+/* ─── Marquee ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.lang-ar .marquee-track { animation-direction: reverse; }
+
+.mq-item {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.mq-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(28, 25, 23, 0.45);
+}
+.mq-sep {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  flex-shrink: 0;
+}
+
+/* ─── Creative cursor (dot + trailing ring) ─── */
 .fx-cursor-dot,
 .fx-cursor-ring {
   position: fixed;
@@ -337,31 +374,26 @@ html.lang-ar .studio-root * {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--cursor-color, #6D28D9);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--cursor-color, #6D28D9) 60%, transparent);
+  background: var(--cursor-color, #1C1917);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--cursor-color, #1C1917) 60%, transparent);
 }
-.fx-cursor-ring {
-  width: 0;
-  height: 0;
-}
+.fx-cursor-ring { width: 0; height: 0; }
 .fx-cursor-ring-inner {
   width: 40px;
   height: 40px;
   margin: -20px 0 0 -20px;
   border-radius: 50%;
-  border: 1.5px solid var(--cursor-ring, rgba(109, 40, 217, 0.5));
+  border: 1.5px solid var(--cursor-ring, rgba(28, 25, 23, 0.35));
   transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 .fx-cursor-ring.is-hover .fx-cursor-ring-inner {
   transform: scale(1.6);
-  border-color: var(--cursor-ring-strong, rgba(109, 40, 217, 0.95));
-  background: var(--cursor-ring-bg, rgba(109, 40, 217, 0.08));
+  border-color: var(--cursor-ring-strong, rgba(212, 175, 55, 0.95));
+  background: var(--cursor-ring-bg, rgba(212, 175, 55, 0.10));
 }
-.fx-cursor-ring.is-down .fx-cursor-ring-inner {
-  transform: scale(0.7);
-}
+.fx-cursor-ring.is-down .fx-cursor-ring-inner { transform: scale(0.7); }
 
-/* Hide the OS cursor inside the studio + HUD shells (desktop only) */
+/* Hide the OS cursor inside the studio (desktop only) */
 @media (pointer: fine) {
   .studio-root,
   .studio-root a,
@@ -372,21 +404,53 @@ html.lang-ar .studio-root * {
   .studio-root select {
     cursor: none !important;
   }
-  .hud-shell,
-  .hud-shell a,
-  .hud-shell button,
-  .hud-shell input,
-  .hud-shell textarea,
-  .hud-shell label,
-  .hud-shell select {
-    cursor: none !important;
-  }
 }
 
-/* HUD (main site) cursor theme — amethyst to match the HUD palette */
-.hud-shell {
-  --cursor-color: #9B7EDE;
-  --cursor-ring: rgba(155, 126, 222, 0.55);
-  --cursor-ring-strong: rgba(155, 126, 222, 0.95);
-  --cursor-ring-bg: rgba(155, 126, 222, 0.10);
+/* ─── Wordmark lockup (matches the official logo) ─── */
+.wordmark-fikra {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.wordmark-digital {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+html.lang-ar .wordmark-digital { letter-spacing: 0.05em; }
+
+/* ─── Form fields ─── */
+.field-fikra {
+  width: 100%;
+  border-radius: 14px;
+  border: 1.5px solid rgba(28, 25, 23, 0.14);
+  background: #fff;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.field-fikra::placeholder { color: rgba(125, 116, 102, 0.75); }
+.field-fikra:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.22);
+}
+
+/* ─── Big display headline helper ─── */
+.display-fikra {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* ─── Gold hand-drawn underline (draws in on view) ─── */
+.gold-underline {
+  stroke: var(--color-gold);
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: none;
 }

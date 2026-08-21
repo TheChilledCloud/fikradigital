@@ -1,5 +1,6 @@
 import { useLanguage } from '../context/LanguageContext';
 import { Reveal } from '../components/Reveal';
+import { BrainMark } from '../components/BrainMark';
 import profileImg from '../assets/profile.jpg';
 
 export function About() {
@@ -8,15 +9,12 @@ export function About() {
 
   return (
     <>
-      <section className="relative pt-36 pb-14 overflow-hidden">
-        <div className="absolute inset-0 paper-grid pointer-events-none" />
+      <section className="relative pt-36 pb-12 overflow-hidden">
+        <div className="absolute inset-0 paper-grid pointer-events-none" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet/30 bg-violet/5 text-violet text-xs font-bold tracking-widest uppercase mb-5">
-              <span className="w-2 h-2 rounded-full bg-violet animate-pulse" />
-              {t('about.title')}
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-4">{t('about.title')}</h1>
+            <span className="eyebrow mb-5">{t('about.title')}</span>
+            <h1 className="display-fikra text-4xl md:text-6xl mb-4">{t('about.title')}</h1>
             <p className="text-ink/60 max-w-xl mx-auto">{t('about.sub')}</p>
           </Reveal>
         </div>
@@ -24,17 +22,28 @@ export function About() {
 
       <section className="py-10 md:py-16">
         <div className="max-w-6xl mx-auto px-5 md:px-8 grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-          {/* Photo */}
+          {/* Photo — offset gold frame + the mark as a seal */}
           <Reveal className="lg:col-span-2">
             <div className="relative group max-w-sm mx-auto lg:mx-0">
-              <div className="absolute -inset-4 bg-violet/20 blur-2xl rounded-3xl group-hover:rotate-2 transition-transform duration-500" />
-              <div className="relative rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
+              <div
+                className="absolute -inset-3 rounded-[28px] border border-gold/40 rotate-2 group-hover:rotate-0 transition-transform duration-500"
+                aria-hidden="true"
+              />
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-ink/20">
                 <img
                   src={profileImg}
                   alt="Ahmad Alfaisal"
                   className="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
               </div>
+              <BrainMark
+                className="absolute -bottom-7 -end-4 h-20 w-auto drop-shadow-lg"
+                style={{
+                  ['--mk-line' as string]: 'var(--color-ink)',
+                  ['--mk-bg' as string]: 'var(--color-canvas)',
+                  ['--mk-seed' as string]: 'var(--color-gold)',
+                }}
+              />
               <div
                 className="absolute -bottom-5 start-1/2 -translate-x-1/2 bg-ink text-canvas text-xs font-bold px-5 py-2.5 rounded-full whitespace-nowrap shadow-lg text-center"
                 dir={isRtl ? 'rtl' : 'ltr'}
@@ -55,9 +64,15 @@ export function About() {
             <Reveal>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {facts.map((f: any) => (
-                  <div key={f.label} className="rounded-xl border border-ink/10 bg-white px-5 py-4">
-                    <div className="text-[10px] font-bold tracking-widest text-violet uppercase mb-1">{f.label}</div>
-                    <div className="font-display font-bold text-sm leading-snug">{f.value}</div>
+                  <div
+                    key={f.label}
+                    className="group rounded-2xl border border-ink/10 bg-white px-5 py-4 hover:border-gold/50 transition-colors duration-300"
+                  >
+                    <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest text-taupe uppercase mb-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" aria-hidden="true" />
+                      {f.label}
+                    </div>
+                    <div className="font-display font-semibold text-sm leading-snug">{f.value}</div>
                   </div>
                 ))}
               </div>

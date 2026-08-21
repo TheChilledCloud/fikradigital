@@ -9,23 +9,21 @@ interface LanguageSwitchProps {
   options: LangOption[];
   value: string;
   onChange: (value: string) => void;
-  /** light = studio (violet), dark = HUD (amethyst) */
-  variant?: 'light' | 'dark';
   /** unique namespace for the sliding pill's layoutId */
   id: string;
   size?: 'sm' | 'md';
+  /** render on a graphite surface */
+  onDark?: boolean;
 }
 
 /**
- * Segmented language switch with a sliding pill indicator.
+ * Segmented language switch — ink pill on cream, porcelain pill on graphite.
  */
-export function LanguageSwitch({ options, value, onChange, variant = 'light', id, size = 'md' }: LanguageSwitchProps) {
+export function LanguageSwitch({ options, value, onChange, id, size = 'md', onDark = false }: LanguageSwitchProps) {
   return (
     <div
       className={`relative flex items-center rounded-full p-1 border select-none ${
-        variant === 'light'
-          ? 'border-ink/10 bg-white/80'
-          : 'border-[var(--border-panel)] bg-[var(--bg-panel)] backdrop-blur-md'
+        onDark ? 'border-porcelain/20 bg-porcelain/5' : 'border-ink/12 bg-white/70'
       } ${size === 'sm' ? 'gap-0.5' : 'gap-1'}`}
       role="tablist"
       aria-label="Language"
@@ -42,22 +40,18 @@ export function LanguageSwitch({ options, value, onChange, variant = 'light', id
               size === 'sm' ? 'py-1 text-[11px]' : 'py-1.5 text-xs'
             } ${
               isActive
-                ? variant === 'light'
-                  ? 'text-white'
-                  : 'text-[var(--color-nebula-dynamic)]'
-                : variant === 'light'
-                  ? 'text-ink/55 hover:text-ink'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                ? onDark
+                  ? 'text-graphite'
+                  : 'text-canvas'
+                : onDark
+                  ? 'text-porcelain/55 hover:text-porcelain'
+                  : 'text-taupe hover:text-ink'
             }`}
           >
             {isActive && (
               <motion.span
                 layoutId={`${id}-lang-pill`}
-                className={`absolute inset-0 rounded-full ${
-                  variant === 'light'
-                    ? 'bg-violet shadow-sm shadow-violet/30'
-                    : 'bg-amethyst'
-                }`}
+                className={`absolute inset-0 rounded-full ${onDark ? 'bg-porcelain' : 'bg-ink'}`}
                 transition={{ type: 'spring', stiffness: 420, damping: 34 }}
               />
             )}

@@ -5,15 +5,15 @@ import { useLanguage } from '../context/LanguageContext';
 import { Reveal } from '../components/Reveal';
 
 const block = 'rounded-2xl border border-ink/10 bg-white p-7 md:p-8';
-const h2 = 'font-display text-xl font-bold text-violet mb-3';
+const h2 = 'display-fikra text-xl mb-3';
 const p = 'text-ink/70 text-sm leading-relaxed mb-3';
-const a = 'text-violet underline underline-offset-2 hover:text-ink transition-colors';
+const a = 'text-gold-deep underline underline-offset-2 hover:text-ink transition-colors';
 
 export function Impressum() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = 'Impressum — fikradigital';
+    document.title = 'Impressum — Fikra Digital';
   }, []);
 
   return (
@@ -23,8 +23,7 @@ export function Impressum() {
         <div className="absolute inset-0 paper-grid pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet/30 bg-violet/5 text-violet text-xs font-bold tracking-widest uppercase mb-5">
-              <span className="w-2 h-2 rounded-full bg-violet animate-pulse" />
+            <div className="eyebrow mb-5">
               Impressum
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-4">Impressum</h1>
@@ -40,7 +39,7 @@ export function Impressum() {
             <div className={block}>
               <h2 className={h2}>Diensteanbieter</h2>
               <p className={p}>
-                <strong>fikradigital</strong> — Webdesign-Studio
+                <strong>Fikra Digital</strong> — Webdesign-Studio
                 <br />
                 Inhaber: Ahmad Alfaisal
                 <br />
@@ -155,7 +154,7 @@ export function Impressum() {
           <Reveal className="pt-4 text-center">
             <Link
               to="/contact"
-              className="btn-studio inline-flex items-center gap-2 px-6 py-3 text-sm font-bold border-2 border-ink/15 hover:border-violet text-ink hover:text-violet"
+              className="btn-fikra btn-fikra-ghost inline-flex items-center gap-2 px-6 py-3 text-sm"
             >
               <ArrowLeft size={16} /> {t('nav.contact')}
             </Link>

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Layout, Utensils, Sparkles, ShoppingCart, Globe, HeartHandshake, Check, ArrowRight } from 'lucide-react';
+import { Layout, Utensils, Sparkles, ShoppingCart, Globe, HeartHandshake, Check } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { Reveal } from '../components/Reveal';
+import { FikraButton } from '../components/FikraButton';
 
 const icons: Record<string, React.ReactNode> = {
   layout: <Layout size={24} />,
@@ -13,7 +13,7 @@ const icons: Record<string, React.ReactNode> = {
 };
 
 export function Services() {
-  const { t, isRtl } = useLanguage();
+  const { t } = useLanguage();
   const items: any[] = t('services.items') ?? [];
   const pricing: any[] = t('services.pricing') ?? [];
   const process: any[] = t('services.process') ?? [];
@@ -21,15 +21,12 @@ export function Services() {
   return (
     <>
       {/* Header */}
-      <section className="relative pt-36 pb-14 overflow-hidden">
-        <div className="absolute inset-0 paper-grid pointer-events-none" />
+      <section className="relative pt-36 pb-12 overflow-hidden">
+        <div className="absolute inset-0 paper-grid pointer-events-none" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet/30 bg-violet/5 text-violet text-xs font-bold tracking-widest uppercase mb-5">
-              <span className="w-2 h-2 rounded-full bg-violet animate-pulse" />
-              {t('services.title')}
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-4">{t('services.title')}</h1>
+            <span className="eyebrow mb-5">{t('services.title')}</span>
+            <h1 className="display-fikra text-4xl md:text-6xl mb-4">{t('services.title')}</h1>
             <p className="text-ink/60 max-w-xl mx-auto">{t('services.sub')}</p>
           </Reveal>
         </div>
@@ -40,12 +37,14 @@ export function Services() {
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((s: any, i: number) => (
-              <Reveal key={s.title} delay={(i % 3) * 0.1}>
-                <div className="group h-full rounded-2xl border border-ink/10 bg-white p-8 hover:shadow-xl hover:shadow-violet/10 hover:-translate-y-1.5 hover:border-violet/40 transition-all duration-300">
-                  <div className="w-14 h-14 rounded-2xl bg-violet/10 text-violet flex items-center justify-center mb-6 group-hover:bg-violet group-hover:text-white group-hover:rotate-6 transition-all duration-300">
+              <Reveal key={s.title} delay={(i % 3) * 0.1} className="h-full">
+                <div className="card-fikra group h-full p-8">
+                  <div className="w-14 h-14 rounded-full border border-ink/12 text-ink flex items-center justify-center mb-6 group-hover:bg-ink group-hover:text-canvas group-hover:border-ink transition-colors duration-300">
                     {icons[s.icon] ?? <Sparkles size={24} />}
                   </div>
-                  <h3 className="font-display text-xl font-bold mb-3">{s.title}</h3>
+                  <h3 className="display-fikra text-xl mb-3">
+                    <span className="card-title-underline">{s.title}</span>
+                  </h3>
                   <p className="text-ink/65 text-sm leading-relaxed">{s.desc}</p>
                 </div>
               </Reveal>
@@ -54,11 +53,12 @@ export function Services() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Pricing — the featured plan wears the graphite/gold identity */}
       <section className="py-20 md:py-28 bg-white border-y border-ink/5">
         <div className="max-w-6xl mx-auto px-5 md:px-8">
           <Reveal className="text-center mb-14">
-            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-3">{t('services.pricingTitle')}</h2>
+            <span className="eyebrow mb-4">{t('services.pricingTitle')}</span>
+            <h2 className="display-fikra text-3xl md:text-5xl mb-3">{t('services.pricingTitle')}</h2>
             <p className="text-ink/60 max-w-xl mx-auto">{t('services.pricingSub')}</p>
           </Reveal>
 
@@ -66,57 +66,62 @@ export function Services() {
             {pricing.map((p: any, i: number) => (
               <Reveal key={p.name} delay={i * 0.1} className="h-full">
                 <div
-                  className={`relative h-full rounded-3xl p-8 flex flex-col ${
+                  className={`relative h-full rounded-3xl p-8 flex flex-col overflow-hidden ${
                     p.featured
-                      ? 'bg-violet text-white shadow-2xl shadow-violet/30 scale-105 z-10'
-                      : 'border border-ink/10 bg-canvas'
+                      ? 'bg-graphite text-porcelain shadow-2xl shadow-graphite/30 scale-[1.02] z-10'
+                      : 'card-fikra hover:translate-y-0'
                   }`}
                 >
+                  {/* gold corner glow on the featured card */}
                   {p.featured && (
-                    <span className="absolute -top-3 start-1/2 -translate-x-1/2 bg-ink text-canvas text-[10px] font-bold tracking-widest px-4 py-1 rounded-full uppercase whitespace-nowrap">
+                    <div
+                      className="absolute -top-16 -end-16 w-40 h-40 rounded-full bg-gold/15 blur-2xl pointer-events-none"
+                      aria-hidden="true"
+                    />
+                  )}
+                  {p.featured && (
+                    <span className="absolute top-5 end-5 bg-gold text-graphite text-[10px] font-bold tracking-widest px-3.5 py-1 rounded-full uppercase">
                       {t('services.popular')}
                     </span>
                   )}
                   {p.badge && (
                     <span
-                      className={`inline-block text-[11px] font-bold tracking-wide px-3 py-1.5 rounded-full mb-4 ${
-                        p.featured ? 'bg-white/20 text-white' : 'bg-violet/10 text-violet border border-violet/25'
+                      className={`inline-block text-[11px] font-bold tracking-wide px-3 py-1.5 rounded-full mb-4 w-fit ${
+                        p.featured ? 'bg-gold/15 text-gold border border-gold/30' : 'bg-gold/10 text-gold-deep border border-gold/30'
                       }`}
                     >
                       {p.badge}
                     </span>
                   )}
-                  <h3 className={`font-display text-xl font-bold mb-2 ${p.featured ? 'text-white' : ''}`}>{p.name}</h3>
+                  <h3 className={`display-fikra text-xl mb-2 ${p.featured ? 'text-porcelain' : ''}`}>{p.name}</h3>
                   <div className="mb-1">
                     {p.oldPrice && (
-                      <span className={`font-display text-xl line-through me-2 align-top ${p.featured ? 'text-white/50' : 'text-ink/35'}`}>
+                      <span className={`font-display text-xl line-through me-2 align-top ${p.featured ? 'text-porcelain/40' : 'text-ink/30'}`}>
                         {p.oldPrice}
                       </span>
                     )}
-                    <span className={`font-display text-4xl font-bold ${p.featured ? 'text-white' : 'text-violet'}`}>{p.price}</span>
+                    <span className={`display-fikra text-4xl ${p.featured ? 'text-gold' : 'text-ink'}`}>{p.price}</span>
                   </div>
                   {p.monthly && (
-                    <div className={`text-sm font-semibold mb-2 ${p.featured ? 'text-white/75' : 'text-ink/55'}`}>{p.monthly}</div>
+                    <div className={`text-sm font-semibold mb-2 ${p.featured ? 'text-porcelain/70' : 'text-taupe'}`}>{p.monthly}</div>
                   )}
-                  <p className={`text-sm mb-6 ${p.featured ? 'text-white/85' : 'text-ink/60'}`}>{p.desc}</p>
+                  <p className={`text-sm mb-6 ${p.featured ? 'text-porcelain/80' : 'text-ink/60'}`}>{p.desc}</p>
                   <ul className="space-y-3 mb-8 flex-1">
                     {p.features.map((f: string) => (
-                      <li key={f} className={`flex gap-2.5 text-sm ${p.featured ? 'text-white/90' : 'text-ink/75'}`}>
-                        <Check size={16} className={`${p.featured ? 'text-violet bg-white rounded-full' : 'text-violet'} shrink-0 mt-0.5`} />
+                      <li key={f} className={`flex gap-2.5 text-sm ${p.featured ? 'text-porcelain/90' : 'text-ink/75'}`}>
+                        <Check size={16} className="text-gold shrink-0 mt-0.5" />
                         <span>{f}</span>
                       </li>
                     ))}
                   </ul>
-                  <Link
+                  <FikraButton
                     to="/contact"
-                    className={`btn-studio w-full py-3 text-sm font-bold ${
-                      p.featured
-                        ? 'bg-white text-violet hover:-translate-y-0.5'
-                        : 'border-2 border-ink/15 hover:border-violet text-ink hover:text-violet'
-                    }`}
+                    variant={p.featured ? 'dark' : 'ghost'}
+                    className="w-full py-3 text-sm"
+                    arrow
                   >
                     {p.cta ?? t('nav.cta')}
-                  </Link>
+                  </FikraButton>
                 </div>
               </Reveal>
             ))}
@@ -125,28 +130,32 @@ export function Services() {
           {/* Pricing notes */}
           <Reveal className="mt-12 text-center space-y-2">
             <p className="text-sm text-ink/60">{t('services.pricingNote')}</p>
-            <p className="text-xs text-ink/45">{t('services.ustNote')}</p>
+            <p className="text-xs text-taupe">{t('services.ustNote')}</p>
           </Reveal>
         </div>
       </section>
 
       {/* Process */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-paper">
         <div className="max-w-6xl mx-auto px-5 md:px-8">
           <Reveal className="text-center mb-14">
-            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-3">{t('services.processTitle')}</h2>
+            <span className="eyebrow mb-4">{t('services.processTitle')}</span>
+            <h2 className="display-fikra text-3xl md:text-5xl mb-3">{t('services.processTitle')}</h2>
             <p className="text-ink/60">{t('services.processSub')}</p>
           </Reveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="thought-line hidden lg:block" aria-hidden="true" />
             {process.map((p: any, i: number) => (
               <Reveal key={p.step} delay={i * 0.1}>
-                <div className="h-full rounded-2xl border border-ink/10 bg-white p-7">
-                  <span className="font-display text-5xl font-bold text-violet">
-                    {p.step}
-                  </span>
-                  <h3 className="font-display font-bold text-lg mt-3 mb-2">{p.title}</h3>
-                  <p className="text-ink/60 text-sm leading-relaxed">{p.desc}</p>
+                <div className="group relative flex flex-col items-center text-center">
+                  <div className="relative z-10 w-16 h-16 rounded-full border border-ink/15 bg-canvas flex items-center justify-center mb-5 group-hover:border-gold group-hover:-translate-y-1 transition-all duration-300">
+                    <span className="font-display font-semibold text-lg text-taupe group-hover:text-gold transition-colors duration-300">
+                      {p.step}
+                    </span>
+                  </div>
+                  <h3 className="display-fikra text-lg mb-2">{p.title}</h3>
+                  <p className="text-ink/60 text-sm leading-relaxed max-w-[16rem]">{p.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -154,19 +163,17 @@ export function Services() {
         </div>
       </section>
 
-      {/* Guarantee + CTA — blends with the page */}
+      {/* Guarantee + CTA */}
       <section className="py-20 md:py-28">
         <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
           <Reveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4">{t('services.guarantee')}</h2>
+            <span className="eyebrow mb-4">{t('services.guarantee')}</span>
+            <h2 className="display-fikra text-3xl md:text-4xl mb-4">{t('services.guarantee')}</h2>
             <p className="text-ink/60 max-w-xl mx-auto mb-10">{t('services.guaranteeDesc')}</p>
-            <div className="text-lg font-bold mb-3">{t('services.ctaTitle')}</div>
-            <Link
-              to="/contact"
-              className="btn-studio px-8 py-4 text-base text-white bg-violet font-bold shadow-xl shadow-violet/40 hover:shadow-violet/60 hover:-translate-y-0.5"
-            >
-              {t('services.ctaBtn')} <ArrowRight size={18} className={isRtl ? 'rotate-180' : ''} />
-            </Link>
+            <div className="display-fikra text-xl mb-4">{t('services.ctaTitle')}</div>
+            <FikraButton to="/contact" variant="primary" className="px-8 py-4 text-base" arrow>
+              {t('services.ctaBtn')}
+            </FikraButton>
           </Reveal>
         </div>
       </section>

@@ -34,6 +34,7 @@ export interface Translations {
     cta: string;
     langBtn: string;
     backMain: string;
+    menuTagline: string;
   };
   hero: {
     eyebrow: string;
@@ -122,6 +123,7 @@ export interface Translations {
     response: string;
   };
   footer: {
+    explore: string;
     rights: string;
     built: string;
     tagline: string;
@@ -133,7 +135,7 @@ export interface Translations {
 export const translations: Record<'en' | 'de' | 'ar', Translations> = {
   en: {
     meta: {
-      title: 'fikradigital — Websites that sell',
+      title: 'Fikra Digital — Websites that sell',
       description: 'Custom, high-end websites for restaurants, businesses and brands. Designed, built and deployed by Ahmad Alfaisal. Arabic, English and German.',
     },
     nav: {
@@ -145,6 +147,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       cta: 'Start a project',
       langBtn: 'DEUTSCH',
       backMain: 'Main site',
+      menuTagline: 'fikra — every idea starts with a line',
     },
     hero: {
       eyebrow: 'WEB DESIGN & DEVELOPMENT STUDIO',
@@ -386,6 +389,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       response: 'Opening your mail app…',
     },
     footer: {
+      explore: 'Explore',
       rights: 'All rights reserved.',
       built: 'Designed & built with passion.',
       tagline: 'Websites that sell.',
@@ -395,7 +399,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
   },
   de: {
     meta: {
-      title: 'fikradigital — Websites, die verkaufen',
+      title: 'Fikra Digital — Websites, die verkaufen',
       description: 'Maßgeschneiderte Websites für Restaurants, Unternehmen und Marken — Design, Entwicklung und Launch aus einer Hand. Arabisch, Englisch und Deutsch.',
     },
     nav: {
@@ -407,6 +411,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       cta: 'Projekt starten',
       langBtn: 'العربية',
       backMain: 'Hauptseite',
+      menuTagline: 'fikra — jede Idee beginnt mit einer Linie',
     },
     hero: {
       eyebrow: 'WEBDESIGN & ENTWICKLUNG',
@@ -648,6 +653,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       response: 'Ihre Mail-App wird geöffnet…',
     },
     footer: {
+      explore: 'Entdecken',
       rights: 'Alle Rechte vorbehalten.',
       built: 'Mit Leidenschaft entworfen und gebaut.',
       tagline: 'Websites, die verkaufen.',
@@ -657,7 +663,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
   },
   ar: {
     meta: {
-      title: 'fikradigital — مواقع تبيع',
+      title: 'Fikra Digital — مواقع تبيع',
       description: 'مواقع مخصصة للمطاعم والشركات والعلامات التجارية — تصميم وبرمجة ونشر من أحمد الفيصل. بالعربية والإنجليزية والألمانية.',
     },
     nav: {
@@ -669,6 +675,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       cta: 'ابدأ مشروعك',
       langBtn: 'ENGLISH',
       backMain: 'الموقع الرئيسي',
+      menuTagline: 'فكرة — كل فكرة تبدأ بخط',
     },
     hero: {
       eyebrow: 'استوديو تصميم وبرمجة المواقع',
@@ -910,6 +917,7 @@ export const translations: Record<'en' | 'de' | 'ar', Translations> = {
       response: 'جاري فتح تطبيق البريد…',
     },
     footer: {
+      explore: 'استكشف',
       rights: 'جميع الحقوق محفوظة.',
       built: 'صُمم وبُني بشغف.',
       tagline: 'مواقع تبيع.',

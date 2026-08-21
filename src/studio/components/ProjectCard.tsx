@@ -3,9 +3,10 @@ import { ExternalLink, Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { projectImages } from '../data/projects';
 import type { Project } from '../utils/translations';
+import { FikraButton } from './FikraButton';
 
 /**
- * Browser-mockup project card with 3D tilt and scanline sweep.
+ * Browser-mockup project card with 3D tilt.
  * The mockup links straight to the live site — visitors view the real thing.
  */
 export function ProjectCard({ project }: { project: Project }) {
@@ -15,8 +16,8 @@ export function ProjectCard({ project }: { project: Project }) {
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [9, -9]), { stiffness: 180, damping: 22 });
-  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-11, 11]), { stiffness: 180, damping: 22 });
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 180, damping: 22 });
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), { stiffness: 180, damping: 22 });
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -26,6 +27,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const reset = () => { mx.set(0); my.set(0); };
 
   const host = (project.liveUrl || '').replace('https://', '').replace('/', '');
+  const external = project.liveUrl.startsWith('http');
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -37,7 +39,6 @@ export function ProjectCard({ project }: { project: Project }) {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="relative [perspective:1400px] order-1"
       >
-        <div className="absolute -inset-8 bg-violet/10 blur-3xl rounded-full" />
         <motion.div
           onMouseMove={handleMove}
           onMouseLeave={reset}
@@ -46,23 +47,23 @@ export function ProjectCard({ project }: { project: Project }) {
         >
           <a
             href={project.liveUrl}
-            target={project.liveUrl.startsWith('http') ? '_blank' : undefined}
-            rel={project.liveUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noopener noreferrer' : undefined}
             className="block"
             aria-label={`${project.name} — ${t('work.live')}`}
           >
-            <div className="browser-chrome transition-shadow duration-300 group-hover:shadow-2xl group-hover:shadow-violet/20">
+            <div className="browser-chrome transition-shadow duration-300 group-hover:shadow-[0_40px_80px_-28px_rgba(28,25,23,0.4)]">
               <div className="flex items-center gap-2 px-4 py-2.5 bg-white border-b border-ink/5">
                 <span className="w-3 h-3 rounded-full bg-[#FF5F57]" />
                 <span className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
                 <span className="w-3 h-3 rounded-full bg-[#28C840]" />
                 <div className="ms-3 flex-1 max-w-sm mx-auto">
-                  <div className="flex items-center justify-center gap-2 bg-ink/5 rounded-md px-3 py-1 text-[11px] text-ink/60 font-semibold">
-                    <Globe size={11} className="text-violet" />
+                  <div className="flex items-center justify-center gap-2 bg-ink/5 rounded-md px-3 py-1 text-[11px] text-taupe font-semibold">
+                    <Globe size={11} className="text-gold" />
                     <span className="truncate" dir="ltr">{host}</span>
                   </div>
                 </div>
-                <span className="text-[10px] text-violet font-bold hidden sm:block" dir="ltr">✓ HTTPS</span>
+                <span className="text-[10px] text-taupe font-bold hidden sm:block" dir="ltr">✓ HTTPS</span>
               </div>
 
               <div className="relative overflow-hidden">
@@ -74,14 +75,13 @@ export function ProjectCard({ project }: { project: Project }) {
                     loading="lazy"
                   />
                 ) : (
-                  <div className="w-full aspect-[16/10] bg-violet/10 flex items-center justify-center text-ink/40 font-display text-2xl font-bold">
+                  <div className="w-full aspect-[16/10] bg-paper flex items-center justify-center text-taupe font-display text-2xl font-semibold">
                     {project.name}
                   </div>
                 )}
-                <div className="scanline" />
-                <div className="absolute inset-0 bg-ink/0 hover:bg-ink/55 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <span className="flex items-center gap-2 text-sm font-bold text-white border border-white/50 px-5 py-2.5 rounded-full bg-ink/70">
-                    <ExternalLink size={14} className="text-violet" /> {t('work.live')}
+                <div className="absolute inset-0 bg-graphite/0 group-hover:bg-graphite/70 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <span className="flex items-center gap-2 text-sm font-bold text-graphite bg-gold px-5 py-2.5 rounded-full">
+                    <ExternalLink size={14} /> {t('work.live')}
                   </span>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </a>
 
           {project.badge && (
-            <div className="absolute -top-3 -end-3 z-10 rotate-3 bg-violet text-white text-[11px] font-bold tracking-[0.2em] px-3 py-1.5 rounded-full shadow-lg shadow-violet/30">
+            <div className="absolute -top-3 -end-3 z-10 rotate-3 bg-ink text-gold text-[11px] font-bold tracking-[0.2em] px-3.5 py-1.5 rounded-full shadow-lg">
               {project.badge}
             </div>
           )}
@@ -106,42 +106,42 @@ export function ProjectCard({ project }: { project: Project }) {
       >
         <div className="flex items-baseline gap-3 mb-2 flex-wrap">
           {project.nativeName && (
-            <span className="text-2xl md:text-3xl text-violet font-bold" style={{ fontFamily: 'var(--font-arabic, Cairo)' }} dir="rtl">
+            <span className="text-2xl md:text-3xl text-gold font-bold" style={{ fontFamily: 'var(--font-arabic, Cairo)' }} dir="rtl">
               {project.nativeName}
             </span>
           )}
-          <h3 className="font-display text-2xl md:text-4xl font-bold tracking-tight">{project.name}</h3>
+          <h3 className="display-fikra text-2xl md:text-4xl">{project.name}</h3>
         </div>
-        <p className="text-violet font-semibold text-sm md:text-base mb-4">{project.tagline}</p>
+        <p className="text-taupe font-semibold text-sm md:text-base mb-4">{project.tagline}</p>
         <p className="text-ink/70 leading-relaxed mb-6 text-sm md:text-base">{project.description}</p>
 
-        <ul className="space-y-2.5 mb-7">
+        <ul className="space-y-2.5 mb-6">
           {project.features.map((f) => (
             <li key={f} className="flex gap-3 text-ink/75 text-sm">
-              <span className="w-5 h-5 rounded-full bg-violet text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">✓</span>
+              <span className="w-5 h-5 rounded-full border border-gold/60 text-gold text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                ✓
+              </span>
               <span>{f}</span>
             </li>
           ))}
         </ul>
 
-        <div className="flex flex-wrap gap-2 mb-7">
+        <div className="flex flex-wrap gap-2 mb-6">
           {project.tags.map((tg) => (
-            <span key={tg} className="text-[11px] font-bold tracking-wider text-violet border border-violet/25 bg-violet/5 rounded-full px-3 py-1">
+            <span key={tg} className="text-[11px] font-bold tracking-wider text-taupe border border-ink/15 bg-white/60 rounded-full px-3 py-1">
               {tg}
             </span>
           ))}
         </div>
 
-        <div className="flex flex-wrap gap-4">
-          <a
-            href={project.liveUrl}
-            target={project.liveUrl.startsWith('http') ? '_blank' : undefined}
-            rel={project.liveUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className="btn-studio px-6 py-3.5 text-sm text-white bg-violet shadow-lg shadow-violet/25 hover:shadow-violet/45 hover:-translate-y-0.5"
-          >
-            <ExternalLink size={16} /> {t('work.live')}
-          </a>
-        </div>
+        <FikraButton
+          href={project.liveUrl}
+          variant="primary"
+          className="px-6 py-3 text-sm"
+          arrow
+        >
+          {t('work.live')}
+        </FikraButton>
       </motion.div>
     </div>
   );
